@@ -1,0 +1,115 @@
+body{
+    background-image: url("http://wallpapercave.com/wp/rmPe6w5.jpg");
+    background-repeat: no-repeat;
+    color: white;
+    background-attachment: fixed;
+    background-color: black; 
+    background-position: -500px 0px;  
+
+}
+
+.container-fluid.text-center{
+    padding-top: 41px;
+}
+
+
+.searchBlock{
+    margin-top: 10px;
+    display: inline-block;
+
+}
+
+#title2{
+    display: block;
+}
+.searchBlock .form-control{
+    margin: 10px;
+    margin-top: 0px;
+    float: left;
+
+}
+
+#searchTerm{
+    width: 46%;
+}
+
+.input-group-btn{
+    width: 50px;    
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+ul li{
+    color: black;
+    background-color: white;
+    margin: 20px;
+    border-style: solid;
+    border-width: thin;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+ul li:hover{
+    border-bottom-width: thick;
+    border-bottom-color: #f5b450;
+}
+
+ul li a:hover{
+    font-weight: bold;
+    font-size: medium;
+    color: #11719e
+}
+
+
+#output{
+    width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wikicon{
+    padding-top: 100px;
+}
+
+#wikilogo{
+    width: 135px;
+}
+
+#title {
+    font-family: 'Galada', cursive;
+    font-size: 50px;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 1s;
+}
+
+#subtit {
+    margin-bottom: 20px;
+    font-family: 'Allerta', sans-serif;
+    font-size: 17px;
+    text-transform: uppercase;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 1.5s;
+}
+
+#serb {
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 2s;
+}
+
+footer{
+    margin-top: 50px;
+}
+
+@media (max-width: 480px) {
+    #output{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+}

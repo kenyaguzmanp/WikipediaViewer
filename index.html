@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Wikipedia Viewer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="newcss.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Allerta|Galada" rel="stylesheet">
+    </head>
+    <body>
+        <div class="wikicon text-center animated bounceInDown">
+           <a id="title2" href="https://en.wikipedia.org/wiki/Special:Random" target="blank">
+                <img id='wikilogo' src="http://vignette2.wikia.nocookie.net/madeon/images/1/12/Wikipedia.png/revision/latest?cb=20150314201125">                
+            </a> 
+        </div>
+        <div class="container-fluid text-center">
+            <h1 id="title" class="animated fadeIn">Wikipedia Viewer</h1>
+            <h3 id="subtit" class="animated fadeIn">Search for any article you need!</h3>
+            
+            <div id="serb" class="searchBlock  animated fadeIn">
+                <input class="form-control" id="searchTerm" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button id="search" type="button" class="btn btn-primary">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </span>
+            </div>
+            <ul id="output">
+            </ul>
+
+        </div>
+        <footer>
+            <p class="text-center">Coded by <a href="https://www.freecodecamp.com/kenyaguzmanp" target="_blank" >Kenya Guzmán</a></p>
+        </footer>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+ 
+                
+                $("#searchTerm").on("click",function () {
+                $( this ).animate({
+                    width: "70%",                  
+                    fontSize: "1em"
+                  }, 500 );
+                });
+                
+                $("#wikilogo").hover(function () {
+                $( this ).toggleClass('animated tada');
+                });
+
+
+                $("#search").click(function () {
+                    var searchTerm1 = $("#searchTerm").val();
+                    var searchTerm = encodeURI(searchTerm1);
+                    console.log(searchTerm);
+                    var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchTerm + "&format=json&callback=?";
+
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        async: false,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            console.log(data[1][0]);
+                            console.log(data[1][1]);
+                            console.log(data[1][2]);
+                            $("#output").html(" ");
+                            $("#output").addClass('animated slideInRight');
+                            for (var i = 0; i < data[1].length; i++) {
+                                $("#output").prepend("<li><a href= " + data[3][i] + " ' target='blank'>" + data[1][i] + "</a><p>" + data[2][i] + "</p></li>");
+                            }
+                            $("#searchTerm").val(" ");
+                        },
+                        error: function (errorMessage) {
+                            alert("Error");
+                        }
+
+                    });
+
+
+
+                });
+
+                $("#searchTerm").keypress(function (e) {
+                    if (e.which === 13) {
+                        $("#search").click();
+                    }
+                });
+
+
+            });
+
+        </script>
+
+
+    </body>
+</html>
